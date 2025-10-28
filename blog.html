@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Picarones Deliciosos</title>
+    <style>
+        :root {
+            --color-primario: #D8B48A;
+            --color-secundario: #5C3B28;
+            --color-accento: #C76F4A;
+            --color-texto: #333;
+            --color-fondo: #f9f5f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--color-primario);
+        }
+        
+        .logo span {
+            color: var(--color-accento);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--color-secundario);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--color-accento);
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(92, 59, 40, 0.8), rgba(92, 59, 40, 0.8)), url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .blog-layout {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .filter-bar {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-bar span {
+            font-weight: bold;
+            color: var(--color-secundario);
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid var(--color-primario);
+            background-color: white;
+            color: var(--color-secundario);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--color-accento);
+            border-color: var(--color-accento);
+            color: white;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .blog-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .card-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--color-accento);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .card-content {
+            padding: 20px;
+        }
+        
+        .card-content h3 {
+            color: var(--color-secundario);
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+        
+        .card-meta {
+            display: flex;
+            gap: 15px;
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+        
+        .card-content p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .read-more {
+            color: var(--color-accento);
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+        
+        .sidebar-widget {
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .sidebar-widget h3 {
+            color: var(--color-secundario);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-primario);
+        }
+        
+        .search-box {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .search-box button {
+            padding: 12px 20px;
+            background-color: var(--color-accento);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+        
+        .category-list, .popular-list {
+            list-style: none;
+        }
+        
+        .category-list li, .popular-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .category-list a, .popular-list a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .category-list a:hover, .popular-list a:hover {
+            color: var(--color-accento);
+        }
+        
+        .count {
+            background-color: var(--color-fondo);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+        
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tag {
+            padding: 6px 15px;
+            background-color: var(--color-fondo);
+            border-radius: 20px;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        
+        .tag:hover {
+            background-color: var(--color-accento);
+            color: white;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+        
+        .pagination button {
+            padding: 10px 18px;
+            border: 1px solid var(--color-primario);
+            background-color: white;
+            color: var(--color-secundario);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pagination button:hover, .pagination button.active {
+            background-color: var(--color-accento);
+            border-color: var(--color-accento);
+            color: white;
+        }
+        
+        footer {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            color: var(--color-primario);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a:hover {
+            color: var(--color-primario);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--color-accento);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        
+        @media (max-width: 992px) {
+            .blog-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .filter-bar {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Picarones<span>Deliciosos</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="#">Categorías</a>
+                        <div class="dropdown-content">
+                            <a href="#">Tienda de Souvenirs</a>
+                            <a href="#">Plantas Utilizadas</a>
+                            <a href="#">Conócenos</a>
+                            <a href="#">Recetas Tradicionales</a>
+                            <a href="#">Historia del Picarón</a>
+                            <a href="#">Eventos y Talleres</a>
+                        </div>
+                    </li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Nuestro Blog</h1>
+            <p>Descubre recetas, historias y secretos de los mejores picarones peruanos</p>
+        </div>
+    </section>
+
+    <div class="container blog-layout">
+        <div class="main-blog-content">
+            <div class="filter-bar">
+                <span>Filtrar por:</span>
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="recetas">Recetas</button>
+                <button class="filter-btn" data-filter="historia">Historia</button>
+                <button class="filter-btn" data-filter="ingredientes">Ingredientes</button>
+                <button class="filter-btn" data-filter="tecnicas">Técnicas</button>
+                <button class="filter-btn" data-filter="eventos">Eventos</button>
+            </div>
+
+            <div class="blog-grid" id="blogGrid">
+                <article class="blog-card" data-category="historia">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <span class="card-category">Historia</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>La Historia del Picarón Peruano</h3>
+                        <div class="card-meta">
+                            <span>📅 15 Mayo 2023</span>
+                            <span>👤 Chef María</span>
+                        </div>
+                        <p>El picarón es un postre tradicional peruano que tiene sus raíces en la época colonial. Descubre cómo este dulce ha evolucionado...</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="recetas">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <span class="card-category">Recetas</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Receta Tradicional de Picarones Caseros</h3>
+                        <div class="card-meta">
+                            <span>📅 8 Mayo 2023</span>
+                            <span>👤 Chef Carlos</span>
+                        </div>
+                        <p>Aprende a preparar auténticos picarones peruanos en casa con esta receta paso a paso y todos los secretos...</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="ingredientes">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <span class="card-category">Ingredientes</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Beneficios del Camote y Zapallo</h3>
+                        <div class="card-meta">
+                            <span>📅 1 Mayo 2023</span>
+                            <span>👤 Nutricionista Laura</span>
+                        </div>
+                        <p>Los ingredientes principales de los picarones no solo son deliciosos, sino también muy nutritivos para tu salud...</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="recetas">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1603532648955-039310d9ed75?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <span class="card-category">Recetas</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>La Miel Perfecta para Picarones</h3>
+                        <div class="card-meta">
+                            <span>📅 25 Abril 2023</span>
+                            <span>👤 Chef María</span>
+                        </div>
+                        <p>Descubre el secreto para preparar la miel de chancaca perfecta que complementa el sabor de tus picarones...</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="historia">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <span class="card-category">Historia</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Variaciones Regionales del Picarón</h3>
+                        <div class="card-meta">
+                            <span>📅 18 Abril 2023</span>
+                            <span>👤 Ana García</span>
+                        </div>
+                        <p>Cada región del Perú tiene su propia versión del picarón. Conoce las diferencias y similitudes entre ellas...</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="tecnicas">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1556910110-a5a63dfd393c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <span class="card-category">Técnicas</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Técnicas de Fritura para Picarones</h3>
+                        <div class="card-meta">
+                            <span>📅 10 Abril 2023</span>
+                            <span>👤 Chef Carlos</span>
+                        </div>
+                        <p>Aprende las técnicas profesionales para conseguir picarones crujientes por fuera y suaves por dentro...</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="eventos">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <span class="card-category">Eventos</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Taller de Picarones en Mayo</h3>
+                        <div class="card-meta">
+                            <span>📅 5 Abril 2023</span>
+                            <span>👤 Equipo PD</span>
+                        </div>
+                        <p>Únete a nuestro próximo taller presencial donde aprenderás a preparar picarones desde cero con chefs expertos...</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="ingredientes">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1471943311424-646960669fbc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <span class="card-category">Ingredientes</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>El Anís en los Picarones Peruanos</h3>
+                        <div class="card-meta">
+                            <span>📅 28 Marzo 2023</span>
+                            <span>👤 Nutricionista Laura</span>
+                        </div>
+                        <p>El anís es un ingrediente esencial en la masa del picarón. Conoce su origen y propiedades aromáticas...</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+
+                <article class="blog-card" data-category="recetas">
+                    <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1557821552-17105176677c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <span class="card-category">Recetas</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Picarones Rellenos: Una Innovación</h3>
+                        <div class="card-meta">
+                            <span>📅 20 Marzo 2023</span>
+                            <span>👤 Chef María</span>
+                        </div>
+                        <p>Una versión moderna del picarón tradicional: descubre cómo rellenarlos con crema pastelera o manjar blanco...</p>
+                        <a href="#" class="read-more">Leer más →</a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <button>&laquo; Anterior</button>
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>4</button>
+                <button>Siguiente &raquo;</button>
+            </div>
+        </div>
+
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Buscar</h3>
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar artículos...">
+                    <button>🔍</button>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Categorías</h3>
+                <ul class="category-list">
+                    <li><a href="#"><span>Recetas</span><span class="count">24</span></a></li>
+                    <li><a href="#"><span>Historia</span><span class="count">18</span></a></li>
+                    <li><a href="#"><span>Ingredientes</span><span class="count">15</span></a></li>
+                    <li><a href="#"><span>Técnicas</span><span class="count">12</span></a></li>
+                    <li><a href="#"><span>Eventos</span><span class="count">8</span></a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Posts Populares</h3>
+                <ul class="popular-list">
+                    <li><a href="#">Los 5 Mejores Lugares para Picarones en Lima</a></li>
+                    <li><a href="#">Secretos de la Masa Perfecta</a></li>
+                    <li><a href="#">Picarones vs Buñuelos: Diferencias</a></li>
+                    <li><a href="#">Historia Colonial del Picarón</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Tags Populares</h3>
+                <div class="tag-cloud">
+                    <a href="#" class="tag">Recetas</a>
+                    <a href="#" class="tag">Perú</a>
+                    <a href="#" class="tag">Postres</a>
+                    <a href="#" class="tag">Camote</a>
+                    <a href="#" class="tag">Zapallo</a>
+                    <a href="#" class="tag">Miel</a>
+                    <a href="#" class="tag">Tradicional</a>
+                    <a href="#" class="tag">Casero</a>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre Nosotros</h3>
+                    <p>Somos apasionados por la gastronomía peruana y nos especializamos en la elaboración artesanal de picarones tradicionales.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="#">Tienda</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="#">Tienda de Souvenirs</a></li>
+                        <li><a href="#">Plantas Utilizadas</a></li>
+                        <li><a href="#">Conócenos</a></li>
+                        <li><a href="#">Recetas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TW</a>
+                        <a href="#">YT</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Picarones Deliciosos. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                
+                blogCards.forEach(card => {
+                    if (filter === 'todos' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
