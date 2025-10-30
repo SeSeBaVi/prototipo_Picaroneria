@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Picarones Deliciosos</title>
+    <style>
+        :root {
+            --color-primario: #D8B48A;
+            --color-secundario: #5C3B28;
+            --color-accento: #C76F4A;
+            --color-texto: #333;
+            --color-fondo: #f9f5f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--color-primario);
+        }
+        
+        .logo span {
+            color: var(--color-accento);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            padding: 10px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--color-secundario);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            display: block;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .dropdown-content a:hover {
+            background-color: var(--color-accento);
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .page-header {
+            background: linear-gradient(rgba(92, 59, 40, 0.85), rgba(92, 59, 40, 0.85)), url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            margin-bottom: 50px;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .contact-info {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .contact-info h2 {
+            color: var(--color-secundario);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--color-fondo);
+            border-radius: 8px;
+            border-left: 4px solid var(--color-accento);
+        }
+        
+        .info-icon {
+            font-size: 28px;
+            margin-right: 20px;
+            color: var(--color-accento);
+        }
+        
+        .info-content h3 {
+            color: var(--color-secundario);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .info-content p {
+            color: #666;
+            margin: 0;
+            font-size: 15px;
+        }
+        
+        .info-content a {
+            color: var(--color-accento);
+            transition: color 0.3s;
+        }
+        
+        .info-content a:hover {
+            color: var(--color-secundario);
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .contact-form h2 {
+            color: var(--color-secundario);
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-form > p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--color-secundario);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-accento);
+            box-shadow: 0 0 0 3px rgba(199, 111, 74, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--color-accento);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: var(--color-secundario);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(92, 59, 40, 0.3);
+        }
+        
+        .social-section {
+            background: white;
+            border-radius: 12px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .social-section h2 {
+            color: var(--color-secundario);
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .social-section p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px 30px;
+            background: var(--color-fondo);
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .social-link:hover {
+            background: var(--color-accento);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(199, 111, 74, 0.3);
+        }
+        
+        .social-icon {
+            font-size: 24px;
+        }
+        
+        .map-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .map-section h2 {
+            color: var(--color-secundario);
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--color-primario), var(--color-accento));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .hours-section {
+            background: linear-gradient(135deg, var(--color-secundario), var(--color-accento));
+            color: white;
+            border-radius: 12px;
+            padding: 50px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .hours-section h2 {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hours-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hours-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--color-primario);
+        }
+        
+        .hours-item p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+        
+        footer {
+            background-color: var(--color-secundario);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            color: var(--color-primario);
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a:hover {
+            color: var(--color-primario);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--color-accento);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        
+        .success-message {
+            display: none;
+            background: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        @media (max-width: 992px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .page-header h1 {
+                font-size: 36px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info,
+            .contact-form,
+            .social-section,
+            .map-section,
+            .hours-section {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-direction: column;
+            }
+            
+            .social-link {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">Picarones<span>Elvirita</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li class="dropdown">
+                        <a href="categorias.html">Categorías</a>
+                        <div class="dropdown-content">
+                            <a href="#">Tienda de Souvenirs</a>
+                            <a href="#">Plantas Utilizadas</a>
+                            <a href="#">Conócenos</a>
+                            <a href="#">Recetas Tradicionales</a>
+                            <a href="#">Historia del Picarón</a>
+                            <a href="#">Eventos y Talleres</a>
+                        </div>
+                    </li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="contacto.html" style="background-color: rgba(255,255,255,0.1);">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Contáctanos</h1>
+            <p>Estamos aquí para responder tus preguntas y recibir tus comentarios</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="contact-section">
+            <div class="contact-info">
+                <h2>Información de Contacto</h2>
+                <p>¿Tienes alguna pregunta sobre nuestros picarones, talleres o productos? Nos encantaría saber de ti. Contáctanos por cualquiera de estos medios.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">📍</div>
+                    <div class="info-content">
+                        <h3>Dirección</h3>
+                        <p>Av. Los Picarones 456<br>Cusco, Cusco 08006<br>Perú</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📞</div>
+                    <div class="info-content">
+                        <h3>Teléfono</h3>
+                        <p><a href="tel:+51987654321">+51 987 654 321</a><br>
+                        <a href="tel:+5114567890">+51 1 456 7890</a></p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">📧</div>
+                    <div class="info-content">
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@picaroneselvirita.com">info@picaroneselvirita.com</a><br>
+                        <a href="mailto:ventas@picaroneselvirita.com">ventas@picaroneselvirita.com</a></p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">💬</div>
+                    <div class="info-content">
+                        <h3>WhatsApp</h3>
+                        <p><a href="https://wa.me/51987654321">+51 987 654 321</a><br>
+                        Respuesta rápida en horario laboral</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h2>Envíanos un Mensaje</h2>
+                <p>Completa el formulario y te responderemos lo antes posible.</p>
+                
+                <div id="successMessage" class="success-message">
+                    ¡Gracias por tu mensaje! Te responderemos pronto.
+                </div>
+
+                <form id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Completo *</label>
+                            <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="telefono">Teléfono</label>
+                            <input type="tel" id="telefono" name="telefono" placeholder="+51 999 999 999">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="asunto">Asunto *</label>
+                            <select id="asunto" name="asunto" required>
+                                <option value="">Selecciona un asunto</option>
+                                <option value="pedido">Consulta sobre pedidos</option>
+                                <option value="taller">Talleres y eventos</option>
+                                <option value="producto">Información de productos</option>
+                                <option value="sugerencia">Sugerencias</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje *</label>
+                        <textarea id="mensaje" name="mensaje" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="hours-section">
+            <h2>Horarios de Atención</h2>
+            <div class="hours-grid">
+                <div class="hours-item">
+                    <h3>🏪 Tienda Física</h3>
+                    <p>Lunes a Sábado<br>9:00 AM - 8:00 PM<br>Domingos: 10:00 AM - 6:00 PM</p>
+                </div>
+                <div class="hours-item">
+                    <h3>📞 Atención Telefónica</h3>
+                    <p>Lunes a Viernes<br>8:00 AM - 6:00 PM<br>Sábados: 9:00 AM - 2:00 PM</p>
+                </div>
+                <div class="hours-item">
+                    <h3>🎓 Talleres</h3>
+                    <p>Sábados y Domingos<br>10:00 AM - 1:00 PM<br>Previa reservación</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-section">
+            <h2>Síguenos en Redes Sociales</h2>
+            <p>Mantente al día con nuestras recetas, promociones y eventos especiales</p>
+            <div class="social-links">
+                <a href="#" class="social-link">
+                    <span class="social-icon">📘</span>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-icon">📷</span>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-icon">🐦</span>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-icon">▶️</span>
+                    <span>YouTube</span>
+                </a>
+                <a href="#" class="social-link">
+                    <span class="social-icon">📌</span>
+                    <span>Pinterest</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="map-section">
+            <h2>Encuéntranos</h2>
+            <div class="map-placeholder">
+                📍 Mapa de Ubicación<br>
+                <small style="font-size: 14px; font-weight: normal; opacity: 0.9;">Av. Los Picarones 456, Cusco</small>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sobre Nosotros</h3>
+                    <p>Somos apasionados por la gastronomía peruana y nos especializamos en la elaboración artesanal de picarones tradicionales.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="tienda.html">Tienda</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="#">Tienda de Souvenirs</a></li>
+                        <li><a href="#">Plantas Utilizadas</a></li>
+                        <li><a href="contacto.html">Conócenos</a></li>
+                        <li><a href="#">Recetas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <div class="social-icons">
+                        <a href="#">FB</a>
+                        <a href="#">IG</a>
+                        <a href="#">TW</a>
+                        <a href="#">YT</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Picarones Deliciosos. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            successMessage.style.display = 'block';
+            form.reset();
+            
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+            
+            window.scrollTo({
+                top: successMessage.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
