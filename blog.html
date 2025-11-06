@@ -59,6 +59,10 @@
         .logo span {
             color: var(--color-accento);
         }
+        .logo img {
+            height: 48px;
+            display: block;
+        }
         
         nav ul {
             display: flex;
@@ -111,7 +115,7 @@
         }
         
         .page-header {
-            background: linear-gradient(rgba(92, 59, 40, 0.8), rgba(92, 59, 40, 0.8)), url('img/picarones1.jpg');
+            background: linear-gradient(rgba(92, 59, 40, 0.8), rgba(92, 59, 40, 0.8)), url('img/picarones3.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -178,6 +182,16 @@
             margin-bottom: 40px;
         }
         
+        .btn {
+            display: inline-block;
+            background-color: var(--color-accento);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
         .blog-card {
             background-color: white;
             border-radius: 8px;
@@ -465,23 +479,11 @@
 <body>
     <header>
         <div class="container header-content">
-            <div class="logo">Picarones<span>Elvirita</span></div>
+            <div class="logo"><img src="img/logo.jpg" alt="Picarones Elvirita logo"></div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li class="dropdown">
-                        <a href="categorias.html">Categorías</a>
-                        <div class="dropdown-content">
-                            <a href="#">Tienda de Souvenirs</a>
-                            <a href="#">Plantas Utilizadas</a>
-                            <a href="#">Conócenos</a>
-                            <a href="#">Recetas Tradicionales</a>
-                            <a href="#">Historia del Picarón</a>
-                            <a href="#">Eventos y Talleres</a>
-                        </div>
-                    </li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="blog.html" style="background-color: rgba(255,255,255,0.1);">Inicio</a></li>
+                    <li><a href="tienda.html">Carta</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
@@ -491,7 +493,8 @@
     <section class="page-header">
         <div class="container">
             <h1>Nuestro Blog</h1>
-            <p>Descubre recetas, historias y secretos de los mejores picarones peruanos</p>
+            <p>Descubre recetas, historias y secretos de los mejores picarones peruanos</p><br>
+            <a href="tienda.html" class="btn">Ver Carta</a>
         </div>
     </section>
 
@@ -524,7 +527,7 @@
                 </article>
 
                 <article class="blog-card" data-category="recetas">
-                    <div class="card-image" style="background-image: url('img/picarones3.jpg');">
+                    <div class="card-image" style="background-image: url('img/picarones1.jpg');">
                         <span class="card-category">Recetas</span>
                     </div>
                     <div class="card-content">
@@ -655,13 +658,6 @@
         </div>
 
         <aside class="sidebar">
-            <div class="sidebar-widget">
-                <h3>Buscar</h3>
-                <div class="search-box">
-                    <input type="text" placeholder="Buscar artículos...">
-                    <button>🔍</button>
-                </div>
-            </div>
 
             <div class="sidebar-widget">
                 <h3>Categorías</h3>
@@ -671,16 +667,6 @@
                     <li><a href="#"><span>Ingredientes</span><span class="count">15</span></a></li>
                     <li><a href="#"><span>Técnicas</span><span class="count">12</span></a></li>
                     <li><a href="#"><span>Eventos</span><span class="count">8</span></a></li>
-                </ul>
-            </div>
-
-            <div class="sidebar-widget">
-                <h3>Posts Populares</h3>
-                <ul class="popular-list">
-                    <li><a href="#">Los 5 Mejores Lugares para Picarones en Lima</a></li>
-                    <li><a href="#">Secretos de la Masa Perfecta</a></li>
-                    <li><a href="#">Picarones vs Buñuelos: Diferencias</a></li>
-                    <li><a href="#">Historia Colonial del Picarón</a></li>
                 </ul>
             </div>
 
@@ -711,20 +697,9 @@
                 <div class="footer-section">
                     <h3>Enlaces Rápidos</h3>
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="blog.html">Inicio</a></li>
                         <li><a href="tienda.html">Tienda</a></li>
-                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Categorías</h3>
-                    <ul>
-                        <li><a href="#">Tienda de Souvenirs</a></li>
-                        <li><a href="#">Plantas Utilizadas</a></li>
-                        <li><a href="#">Conócenos</a></li>
-                        <li><a href="#">Recetas</a></li>
                     </ul>
                 </div>
                 
@@ -732,7 +707,7 @@
                     <h3>Síguenos</h3>
                     <div class="social-icons">
                         <a href="#">FB</a>
-                        <a href="#">IG</a>
+                        <a href="https://www.instagram.com/picarones_elvirita/">IG</a>
                         <a href="#">TW</a>
                         <a href="#">YT</a>
                     </div>
@@ -740,7 +715,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Picarones Deliciosos. Todos los derechos reservados.</p>
+                <p>&copy; 2023 Picarones Elvirita. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>

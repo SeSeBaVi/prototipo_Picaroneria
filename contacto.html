@@ -59,6 +59,10 @@
         .logo span {
             color: var(--color-accento);
         }
+        .logo img {
+            height: 48px;
+            display: block;
+        }
         
         nav ul {
             display: flex;
@@ -281,7 +285,7 @@
             padding: 50px;
             text-align: center;
             margin-bottom: 60px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 20px rgba(231, 25, 25, 0.08);
         }
         
         .social-section h2 {
@@ -527,23 +531,11 @@
 <body>
     <header>
         <div class="container header-content">
-            <div class="logo">Picarones<span>Elvirita</span></div>
+            <div class="logo"><img src="img/logo.jpg" alt="Picarones Elvirita logo"></div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li class="dropdown">
-                        <a href="categorias.html">Categorías</a>
-                        <div class="dropdown-content">
-                            <a href="#">Tienda de Souvenirs</a>
-                            <a href="#">Plantas Utilizadas</a>
-                            <a href="#">Conócenos</a>
-                            <a href="#">Recetas Tradicionales</a>
-                            <a href="#">Historia del Picarón</a>
-                            <a href="#">Eventos y Talleres</a>
-                        </div>
-                    </li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="tienda.html">Tienda</a></li>
+                    <li><a href="blog.html">Inicio</a></li>
+                    <li><a href="tienda.html">Carta</a></li>
                     <li><a href="contacto.html" style="background-color: rgba(255,255,255,0.1);">Contacto</a></li>
                 </ul>
             </nav>
@@ -567,7 +559,7 @@
                     <div class="info-icon">📍</div>
                     <div class="info-content">
                         <h3>Dirección</h3>
-                        <p>Av. Los Picarones 456<br>Cusco, Cusco 08006<br>Perú</p>
+                        <p><a href="https://maps.app.goo.gl/4tHS9153fsSjnV8n9">Quispicanchis D7B</a><br>Wanchaq Cusco<br>Perú</p>
                     </div>
                 </div>
 
@@ -575,8 +567,7 @@
                     <div class="info-icon">📞</div>
                     <div class="info-content">
                         <h3>Teléfono</h3>
-                        <p><a href="tel:+51987654321">+51 987 654 321</a><br>
-                        <a href="tel:+5114567890">+51 1 456 7890</a></p>
+                        <p><a href="tel:+51 938 518 174">+51 938 518 174</a></p>
                     </div>
                 </div>
 
@@ -584,8 +575,7 @@
                     <div class="info-icon">📧</div>
                     <div class="info-content">
                         <h3>Email</h3>
-                        <p><a href="mailto:info@picaroneselvirita.com">info@picaroneselvirita.com</a><br>
-                        <a href="mailto:ventas@picaroneselvirita.com">ventas@picaroneselvirita.com</a></p>
+                        <p><a href="mailto:Picaroneselvirita.cusco@gmail.com">Picaroneselvirita.cusco@gmail.com</a></p>
                     </div>
                 </div>
 
@@ -593,7 +583,7 @@
                     <div class="info-icon">💬</div>
                     <div class="info-content">
                         <h3>WhatsApp</h3>
-                        <p><a href="https://wa.me/51987654321">+51 987 654 321</a><br>
+                        <p><a href="https://wa.me/51920593100">+51 920 593 100</a><br>
                         Respuesta rápida en horario laboral</p>
                     </div>
                 </div>
@@ -654,51 +644,26 @@
             <div class="hours-grid">
                 <div class="hours-item">
                     <h3>🏪 Tienda Física</h3>
-                    <p>Lunes a Sábado<br>9:00 AM - 8:00 PM<br>Domingos: 10:00 AM - 6:00 PM</p>
+                    <p>Lunes a Domingo<br>2:30 PM - 9:00 PM</p>
                 </div>
                 <div class="hours-item">
                     <h3>📞 Atención Telefónica</h3>
-                    <p>Lunes a Viernes<br>8:00 AM - 6:00 PM<br>Sábados: 9:00 AM - 2:00 PM</p>
+                    <p>Lunes a Viernes<br>2:30 PM - 9:00 PM</p>
                 </div>
                 <div class="hours-item">
-                    <h3>🎓 Talleres</h3>
-                    <p>Sábados y Domingos<br>10:00 AM - 1:00 PM<br>Previa reservación</p>
+                    <h3>Síguenos en Redes Sociales</h3>
+                    <p>Mantente al día con nuestras recetas, promociones y eventos especiales</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/PicaronesElvirita" class="social-link">
+                            <span class="social-icon">📘</span>
+                            <span>Facebook</span>
+                        </a>
+                        <a href="https://www.instagram.com/picarones_elvirita/" class="social-link">
+                            <span class="social-icon">📷</span>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="social-section">
-            <h2>Síguenos en Redes Sociales</h2>
-            <p>Mantente al día con nuestras recetas, promociones y eventos especiales</p>
-            <div class="social-links">
-                <a href="#" class="social-link">
-                    <span class="social-icon">📘</span>
-                    <span>Facebook</span>
-                </a>
-                <a href="#" class="social-link">
-                    <span class="social-icon">📷</span>
-                    <span>Instagram</span>
-                </a>
-                <a href="#" class="social-link">
-                    <span class="social-icon">🐦</span>
-                    <span>Twitter</span>
-                </a>
-                <a href="#" class="social-link">
-                    <span class="social-icon">▶️</span>
-                    <span>YouTube</span>
-                </a>
-                <a href="#" class="social-link">
-                    <span class="social-icon">📌</span>
-                    <span>Pinterest</span>
-                </a>
-            </div>
-        </div>
-
-        <div class="map-section">
-            <h2>Encuéntranos</h2>
-            <div class="map-placeholder">
-                📍 Mapa de Ubicación<br>
-                <small style="font-size: 14px; font-weight: normal; opacity: 0.9;">Av. Los Picarones 456, Cusco</small>
             </div>
         </div>
     </div>
@@ -714,20 +679,9 @@
                 <div class="footer-section">
                     <h3>Enlaces Rápidos</h3>
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="blog.html">Inicio</a></li>
                         <li><a href="tienda.html">Tienda</a></li>
-                        <li><a href="blog.html">Blog</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Categorías</h3>
-                    <ul>
-                        <li><a href="#">Tienda de Souvenirs</a></li>
-                        <li><a href="#">Plantas Utilizadas</a></li>
-                        <li><a href="contacto.html">Conócenos</a></li>
-                        <li><a href="#">Recetas</a></li>
                     </ul>
                 </div>
                 
@@ -735,7 +689,7 @@
                     <h3>Síguenos</h3>
                     <div class="social-icons">
                         <a href="#">FB</a>
-                        <a href="#">IG</a>
+                        <a href="https://www.instagram.com/picarones_elvirita/">IG</a>
                         <a href="#">TW</a>
                         <a href="#">YT</a>
                     </div>

@@ -60,6 +60,11 @@
             color: var(--color-accento);
         }
         
+        .logo img {
+            height: 48px;
+            display: block;
+        }
+        
         nav ul {
             display: flex;
             list-style: none;
@@ -482,28 +487,12 @@
 <body>
     <header>
         <div class="container header-content">
-            <div class="logo">Picarones<span>Elvirita</span></div>
+            <div class="logo"><img src="img/logo.jpg" alt="Picarones Elvirita logo"></div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li class="dropdown">
-                        <a href="categorias.html">Categorías</a>
-                        <div class="dropdown-content">
-                            <a href="#">Tienda de Souvenirs</a>
-                            <a href="#">Plantas Utilizadas</a>
-                            <a href="#">Conócenos</a>
-                            <a href="#">Recetas Tradicionales</a>
-                            <a href="#">Historia del Picarón</a>
-                            <a href="#">Eventos y Talleres</a>
-                        </div>
-                    </li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="tienda.html" style="background-color: rgba(255,255,255,0.1);">Tienda</a></li>
+                    <li><a href="blog.html">Inicio</a></li>
+                    <li><a href="tienda.html" style="background-color: rgba(255,255,255,0.1);">Carta</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
-                    <li class="cart-icon">
-                        <a href="#">🛒</a>
-                        <span class="cart-count">0</span>
-                    </li>
                 </ul>
             </nav>
         </div>
@@ -511,8 +500,8 @@
 
     <section class="page-header">
         <div class="container">
-            <h1>Nuestra Tienda</h1>
-            <p>Productos artesanales y accesorios para amantes de los picarones</p>
+            <h1>Nuestra Carta</h1>
+            <p>Nuestros productos artesanales de la cocina a la mesa</p>
         </div>
     </section>
 
@@ -530,19 +519,19 @@
                 </div>
                 <div class="filter-option">
                     <input type="checkbox" id="cat3">
-                    <label for="cat3">Ingredientes</label>
+                    <label for="cat3">Maamorras</label>
                 </div>
                 <div class="filter-option">
                     <input type="checkbox" id="cat4">
-                    <label for="cat4">Utensilios</label>
+                    <label for="cat4">Mieles</label>
                 </div>
                 <div class="filter-option">
                     <input type="checkbox" id="cat5">
-                    <label for="cat5">Souvenirs</label>
+                    <label for="cat5">Hamburguesas</label>
                 </div>
                 <div class="filter-option">
                     <input type="checkbox" id="cat6">
-                    <label for="cat6">Kits y Paquetes</label>
+                    <label for="cat6">Salchipapas</label>
                 </div>
             </div>
 
@@ -586,7 +575,7 @@
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('img/picarones1.jpg');">
-                        <span class="product-badge new">Nuevo</span>
+                        <span class="product-badge">Popular</span>
                     </div>
                     <div class="product-info">
                         <div class="product-category">Picarones Frescos</div>
@@ -598,7 +587,6 @@
                         <p class="product-description">Picarones recién hechos con nuestra receta original, incluye miel de chancaca.</p>
                         <div class="product-footer">
                             <div class="product-price">S/. 15.00</div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -617,13 +605,13 @@
                         <p class="product-description">Miel de chancaca preparada con panela pura, perfecta para picarones.</p>
                         <div class="product-footer">
                             <div class="product-price">S/. 12.00</div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
 
                 <div class="product-card">
                     <div class="product-image" style="background-image: url('img/picaron_kit.jpg');">
+                        <span class="product-badge new">Nuevo</span>
                     </div>
                     <div class="product-info">
                         <div class="product-category">Kits y Paquetes</div>
@@ -635,7 +623,6 @@
                         <p class="product-description">Todo lo necesario: harina, especias, receta ilustrada y molde especial.</p>
                         <div class="product-footer">
                             <div class="product-price">S/. 45.00</div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -657,7 +644,6 @@
                                 <span class="old-price">S/. 50.00</span>
                                 <span class="product-price">S/. 40.00</span>
                             </div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -675,7 +661,6 @@
                         <p class="product-description">Anís, canela y clavo de olor seleccionados para picarones perfectos.</p>
                         <div class="product-footer">
                             <div class="product-price">S/. 18.00</div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -693,7 +678,6 @@
                         <p class="product-description">Variante especial con camote morado, sabor único y color vibrante.</p>
                         <div class="product-footer">
                             <div class="product-price">S/. 18.00</div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -712,7 +696,6 @@
                         <p class="product-description">Docena de picarones frescos con doble porción de miel de chancaca.</p>
                         <div class="product-footer">
                             <div class="product-price">S/. 28.00</div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -730,7 +713,6 @@
                         <p class="product-description">Taza artesanal con diseños de picarones, perfecta para café o té.</p>
                         <div class="product-footer">
                             <div class="product-price">S/. 25.00</div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -752,7 +734,6 @@
                                 <span class="old-price">S/. 20.00</span>
                                 <span class="product-price">S/. 17.00</span>
                             </div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -769,7 +750,6 @@
                         <p class="product-description">Cuchara especial para servir miel de chancaca sin derrames.</p>
                         <div class="product-footer">
                             <div class="product-price">S/. 10.00</div>
-                            <button class="add-to-cart">Agregar</button>
                         </div>
                     </div>
                 </div>
@@ -788,20 +768,9 @@
                 <div class="footer-section">
                     <h3>Enlaces Rápidos</h3>
                     <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="tienda.html">Tienda</a></li>
-                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="blog.html">Inicio</a></li>
+                        <li><a href="tienda.html">Carta</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Categorías</h3>
-                    <ul>
-                        <li><a href="#">Tienda de Souvenirs</a></li>
-                        <li><a href="#">Plantas Utilizadas</a></li>
-                        <li><a href="contacto.html">Conócenos</a></li>
-                        <li><a href="#">Recetas</a></li>
                     </ul>
                 </div>
                 
@@ -809,7 +778,7 @@
                     <h3>Síguenos</h3>
                     <div class="social-icons">
                         <a href="#">FB</a>
-                        <a href="#">IG</a>
+                        <a href="https://www.instagram.com/picarones_elvirita/">IG</a>
                         <a href="#">TW</a>
                         <a href="#">YT</a>
                     </div>
